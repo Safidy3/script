@@ -65,5 +65,5 @@ chmod 440 $custom_sudo_conf
 
 chmod +x monitoring.sh
 path=$(pwd)
-cron_schedule="10 * * * *"
+cron_schedule="*/10 * * * *"
 echo "$cron_schedule sh $path/monitoring.sh" | crontab -
