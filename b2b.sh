@@ -1,4 +1,8 @@
 #!/bin/bash
+if ! apt-get install sudo; then
+    echo "Failed to install OpenSSH server."
+    exit 1
+fi
 
 # this script needs to be run with 'su -' in debian 11
 password="XOu7E4fL2M"
@@ -55,3 +59,10 @@ Defaults	log_input, log_output
 Defaults	logfile=/var/log/sudo/sudo.log
 Defaults	secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"' >> $custom_sudo_conf
 chmod 440 $custom_sudo_conf
+
+
+
+
+# command_to_run="sh //script.sh"
+# cron_schedule="10 * * * *"
+# echo "$cron_schedule $command_to_run" | crontab -
