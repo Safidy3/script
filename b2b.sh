@@ -60,9 +60,6 @@ Defaults	logfile=/var/log/sudo/sudo.log
 Defaults	secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"' >> $custom_sudo_conf
 chmod 440 $custom_sudo_conf
 
-
-
-
 chmod +x monitoring.sh
 path=$(pwd)
 cron_schedule="*/10 * * * *"
