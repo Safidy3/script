@@ -16,8 +16,8 @@ print_info() {
         printf "#Disk Usage: $cmd1/$cmd2%s ($cmd3%%)\n" "Gb"
 
         cpuload=$(top -bn1 | grep "Cpu(s)" | sed "s/.*, *\([0-9.]*\)%* id.*/\1/" | awk '{print 100 - $1"%"}')
-        printf "#CPU load: $cpuload%%\n\n"
-        printf "#Last boot: $(who -b | awk '{print $3 " " $4}')\n"
+        printf "#CPU load: $cpuload%%\n"
+        printf "\n#Last boot: $(who -b | awk '{print $3 " " $4}')\n"
         
         cmd=$(cat /etc/fstab | grep /dev/mapper | wc -l)
         printf "#LVM use: "
