@@ -15,6 +15,7 @@ if ! apt-get install -y openssh-server; then
 fi
 sed -i 's/#Port 22/Port 4242/;s/#PermitRootLogin prohibit-password/PermitRootLogin no/' "$ssh_conf"
 systemctl restart ssh
+systemctl enable ssh
 
 # UFW
 if ! apt-get install -y ufw; then
