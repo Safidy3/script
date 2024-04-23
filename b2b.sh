@@ -24,7 +24,6 @@ if ! apt-get install -y ufw; then
 fi
 ufw allow 4242
 ufw enable
-systemctl start ufw
 
 # HOSTNAME
 hostnamectl set-hostname safandri42
