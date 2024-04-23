@@ -31,9 +31,9 @@ print_info() {
         printf "#Connections TCP: $(echo "$(ss -t -H | wc -l)") ESTABLISHED\n"
         printf "#User log: $(w -h | wc -l)\n"
         
-        cmd1=$(ip address | grep enp | grep inet | awk '{print $2}' | cut -d / -f 1)
-        cmd2=$(ip address | grep enp -A 2 | grep inet6 | awk '{print $2}' | cut -d / -f 1)
-        printf "#Network: IP $cmd1 ($cmd2)\n"
+        ip=$(ip address | grep enp | grep inet | awk '{print $2}' | cut -d / -f 1)
+        mac=$(ip address | grep enp -A 2 | grep inet6 | awk '{print $2}' | cut -d / -f 1)
+        printf "#Network: IP $ip ($mac)\n"
 
         printf "#Sudo: 42 cmd\n"
 }
