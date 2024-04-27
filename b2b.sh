@@ -38,7 +38,7 @@ if ! apt-get install -y libpam-pwquality; then
     exit 1
 fi
 password_path="/etc/pam.d/common-password"
-old_rule="^password[:space:]+requisite[:space:]+pam_pwquality.so[:space:]retry=[0-9]+$"
+old_rule=$(cat /etc/pam.d/common-password | grep pam_pwquality)
 new="password	requisite	pam_pwquality.so retry=3 minlen=10 ucredit=-1 dcredit=-1 maxrepeat=3 reject_username difok=7 enforce_for_root
 Step"
 sed -i "s/$old_rule/$new/" $password_path
