@@ -35,7 +35,7 @@ print_info() {
         mac=$(ip address | grep enp -A 2 | grep inet6 | awk '{print $2}' | cut -d / -f 1)
         printf "#Network: IP $ip ($mac)\n"
 
-        printf "#Sudo: 42 cmd\n"
+        printf "#Sudo: $(cat /var/log/sudo/sudo.log | grep TSID | wc -l) cmd\n"
 }
 
 print_info | wall
