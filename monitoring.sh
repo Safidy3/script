@@ -32,8 +32,7 @@ print_info() {
         printf "#User log: $(w -h | wc -l)\n"
         
         ip=$(ip address | grep enp | grep inet | awk '{print $2}' | cut -d / -f 1)
-        mac=$(ip address | grep enp -A 2 | grep inet6 | awk '{print $2}' | cut -d / -f 1)
-        printf "#Network: IP $ip ($mac)\n"
+        printf "#Network: IP $(hostname -I) ($mac)\n"
 
         printf "#Sudo: $(cat /var/log/sudo/sudo.log | grep TSID | wc -l) cmd\n"
 }
