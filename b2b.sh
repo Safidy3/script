@@ -37,16 +37,15 @@ if ! apt-get install -y libpam-pwquality; then
     echo "Failed to install libpam-pwquality."
     exit 1
 fi
+
 password_path="/etc/pam.d/common-password"
 old_rule=$(cat /etc/pam.d/common-password | grep pam_pwquality)
-new="password	requisite	pam_pwquality.so retry=3 minlen=10 ucredit=-1 dcredit=-1 maxrepeat=3 reject_username difok=7 enforce_for_root
-Step"
+new="password	requisite	pam_pwquality.so retry=3 minlen=10 ucredit=-1 dcredit=-1 maxrepeat=3 reject_username difok=7 enforce_for_root"
 sed -i "s/$old_rule/$new/" $password_path
 
 # NEW USER
 groupadd user42
-useradd -G user42 safandri
-echo "safandri:$password" | chpasswd
+usermod -aG sudo,user42 safandri
 
 # SUDO CONFIGURATION
 custom_sudo_conf="/etc/sudoers.d/local_sudo_conf"
